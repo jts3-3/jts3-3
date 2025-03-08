@@ -43,7 +43,6 @@
 
 <img src="https://raw.githubusercontent.com/jts3-3/jts3-3/output/snake.svg" alt="Snake animation" />
 
-###
 name: Generate snake animation
 
 on:
@@ -69,6 +68,17 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: dist/snake.svg?palette=github-dark
+
+
+      - name: push snake.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+###
 
 
       - name: push snake.svg to the output branch
